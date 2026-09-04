@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora financeira de amônia</title>
+</head>
+<body>
+<h1>Monitoramento de vazamento de amônia em sala de desossa de um frigorífico</h1>
+  <span> <i>
+     Esta calculadora financeira tem como objetivo estimar os prejuízos 
+        sofridos pela empresa decorrentes de vazamentos de amônia, abrangendo 
+        perdas com o insumo, paralisação da produção, contaminação de carga e 
+        danos estruturais.
+  </i>
+  
+    </span> <br>
+    <hr>
+    <div>
+    <h3>AMÔNIA PERDIDA</h3>
+  
+        <span>Volume de amônia perdida(Kg): </span>
+    <input type="text" id="input_amoniaPerdida" placeholder="Digite aqui..."> <br>
+      <span>Preço da amônia(R$ por Kg):</span>
+    <input type="text" id="input_precoAmonia" placeholder="Digite aqui...">
+</div>
+    
+<div>
+ <h3>Parada de produção</h3>
+ <span>Horas de paralização da produção:</span>
+ <input type="text" id="input_paradaProducao" placeholder="Digite aqui..."> <br>
+ <span>Custo de produção perdida (R$ por hora):</span>
+ <input type="text" id="input_custoParada" placeholder="Digite aqui..."> <br>
+</div>
+    
+<div>
+<h3>Carga contaminada</h3>
+<span>Carne perdida  (Por Kg):</span>
+<input type="text" id="input_carneperdida" placeholder="Digite aqui..."> <br>
+<span>Valor da carne (R$ por kg):</span>
+<input type="text" id="input_valorCarne" placeholder="Digite aqui...">
+</div>
+    
+<div>
+    <h3>Danos estruturais</h3>
+    <span>Danos estruturais e equipamentos (R$)</span>
+    <input type="text" id="input_danoEstrutura" placeholder="Digite aqui..."> <br>
+</div>
+<br>    
+    <button onclick="calcular()">Calcular prejuízo sem o sensor</button>
+    <div id="div_exibir"></div>
+    <button onclick="calcular2()">Calcular prejuízo com o sensor</button>
+</body>
+
+
+</html>
+<script>
+    function calcular(){
+        let amoniaPerdida = Number(input_amoniaPerdida.value);
+        let precoAmonia = Number(input_precoAmonia.value);
+        let prejuAmonia = amoniaPerdida * precoAmonia;
+        
+        let paradaProducao = Number(input_paradaProducao.value);
+        let custoParada = Number(input_custoParada.value);
+        let custoProducao = paradaProducao * custoParada;
+        
+        let carnePerdida = Number(input_carneperdida.value);
+        let valorCarne = Number(input_valorCarne.value);
+        let custoCarnePerdida = carnePerdida * valorCarne;
+        
+        let danoEstrutura = Number(input_danoEstrutura.value);
+        
+        let valorTotal = prejuAmonia + custoProducao + custoCarnePerdida + danoEstrutura;
+
+        let porcentagem1 = (prejuAmonia / valorTotal) * 100;
+        let porcentagem2 = (custoProducao / valorTotal) * 100;
+        let porcentagem3 = (custoCarnePerdida / valorTotal) * 100;
+        let porcentagem4 = (danoEstrutura / valorTotal) * 100;
+
+     div_exibir.innerHTML = `O custo correspondente de amônia perdida será <span style="color: red;">R$${prejuAmonia}</span> sendo <span style="color: red;">${porcentagem1.toFixed(2)}%</span> do problema. <br>`;
+     div_exibir.innerHTML += `O custo estimado para a parada de produção será de <span style="color: red;">R$${custoProducao}</span> sendo <span style="color: red;">${porcentagem2.toFixed(2)}%</span> do problema.<br>`;
+     div_exibir.innerHTML += `O custo referente à carne perdida será de <span style="color: red;">R$${custoCarnePerdida}</span> sendo <span style="color: red;">${porcentagem3.toFixed(2)}%</span> do problema.<br>`;
+     div_exibir.innerHTML += `O custo estimado para a reparação do dano estrutural será de <span style="color: red;">R$${danoEstrutura}</span> sendo <span style="color: red;">${porcentagem4.toFixed(2)}%</span> do problema.<br>`;
+     div_exibir.innerHTML += `<b>O prejuízo total consolidado será de <span style="color: white; background-color: red;">R$${valorTotal}</span></b><br>`;
+     
+    }
+    function calcular2(){
+          let amoniaPerdida = Number(input_amoniaPerdida.value) ;
+        let precoAmonia = Number(input_precoAmonia.value);
+        let prejuAmonia = (amoniaPerdida * precoAmonia) * 0.80;
+
+        let paradaProducao = Number(input_paradaProducao.value);
+        let custoParada = Number(input_custoParada.value);
+        let custoProducao = (paradaProducao * custoParada) * 0.80;
+        
+        let carnePerdida = Number(input_carneperdida.value);
+        let valorCarne = Number(input_valorCarne.value);
+        let custoCarnePerdida = (carnePerdida * valorCarne) * 0.80;
+        
+        let danoEstrutura = Number(input_danoEstrutura.value) * 0.80;
+        
+        let valorTotal = prejuAmonia + custoProducao + custoCarnePerdida + danoEstrutura ;
+
+        let porcentagem1 = (prejuAmonia / valorTotal) * 100;
+        let porcentagem2 = (custoProducao / valorTotal) * 100;
+        let porcentagem3 = (custoCarnePerdida / valorTotal) * 100;
+        let porcentagem4 = (danoEstrutura / valorTotal) * 100;
+
+        div_exibir.innerHTML = `<i>Com a implementação do sensor de monitoramento de amonia, será possivel diminuir 20% do prejuizo calculado, se tornando:</i> <br><br>
+            
+         O custo correspondente de amônia perdida será <span style="color: blue;">R$${prejuAmonia}</span> sendo <span style="color: blue;">${porcentagem1.toFixed(2)}%</span> do problema. <br>
+         O custo estimado para a parada de produção será de <span style="color: blue;">R$${custoProducao}</span> sendo <span style="color: blue;">${porcentagem2.toFixed(2)}%</span> do problema.<br>
+        O custo referente à carne perdida será de <span style="color: blue;">R$${custoCarnePerdida}</span> sendo <span style="color: blue;">${porcentagem3.toFixed(2)}%</span> do problema.<br>
+        O custo estimado para a reparação do dano estrutural será de <span style="color: blue;">R$${danoEstrutura}</span> sendo <span style="color: blue;">${porcentagem4.toFixed(2)}%</span> do problema.<br>
+        <b>O prejuízo total consolidado será de <span style="color: white; background-color: blue;">R$${valorTotal.toFixed(2)}</span></b><br>
+        `
+    };
+</script>
