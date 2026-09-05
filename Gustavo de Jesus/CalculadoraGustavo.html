@@ -6,8 +6,9 @@
     <title>Calculadora de custo de manutenção</title>
   </head>
   <body>
+    <h2>Calculadora de custo de manutenção</h2>
     <label for="ipt_hora">O reparo levou quantas horas?</label>
-    <input type="text" id="ipt_hora" /> <br />
+    <input type="number" id="ipt_hora" /> <br />
 
     <span>Selecione uma categoria: </span>
     <button onclick="dia()"><b>DIA</b></button>
@@ -18,13 +19,13 @@
 
     <button onclick="pequeno()"><b>PEQUENO</b></button>
     <i>Até 300 cabeças por dia</i> <br />
-
+    <br>
     <button onclick="medio()"><b>MÉDIO</b></button>
     <i>De 300 a 800 cabeças por dia</i> <br />
-
+    <br>
     <button onclick="grande()"><b>GRANDE</b></button>
     <i>Acima de 1000 cabeças por dia</i> <br />
-
+    <br>
     <div id="div_exibir"></div>
   </body>
 </html>
@@ -81,7 +82,7 @@
 
     let custoTotal = (custoHr + taxaEmergencial).toFixed(2);
 
-    div_exibir.innerHTML = `A taxa emergencial será de R$${taxaEmergencial.toFixed(2)} e as horas de reparo irão custar R$${custoHr.toFixed(2)} <br>
+    div_exibir.innerHTML = `A taxa emergencial será de R$${taxaEmergencial.toFixed(2)}, gias horas de reparo irão custar R$${custoHr.toFixed(2)} <br>
     totalizando R$${custoTotal}`;
   }
 
