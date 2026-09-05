@@ -1,12 +1,128 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calculadora de Danos - PI - Nickolas Merola</title>
 </head>
 <body>
-    <label for="">Carne Perdida em KG</label> <br>
-    <input type="number" id="ipt_QuantCarne">
+    <h1><b style="color: red;">Simulador Financeiro de Vazamento (NH3)</b></h1>
+    <label for="ipt_QuantCarne">Carne Perdida em KG</label> 
+    <input type="number" id="ipt_QuantCarne" placeholder="KG"> <br>
+
+    <label for="ipt_PrecoCarne">Preço Médio da Carne no do Local</label> 
+    <input type="number" id="ipt_PrecoCarne" placeholder="R$"> <br>
+
+    <label for="ipt_Funcionarios">Quantidade de funcionários no local</label> 
+    <input type="number" id="ipt_Funcionarios" placeholder="Funcionários"> <br>
+
+    <label for="ipt_HoraFuncionario">Valor médio da hora dos funcionários</label> 
+    <input type="number" id="ipt_HoraFuncionario" placeholder="Hora Funcionário"> <br>
+
+    <label for="ipt_Contencao">Tempo para conter o problema</label> 
+    <input type="number" id="ipt_Contencao" placeholder="Horas:"> <br>
+
+    <label for="ipt_PrecoAmonia">Preço do Kg da amônia</label> 
+    <input type="text" id="ipt_PrecoAmonia" placeholder="R$ OBS: Caso não souber vamos estipular um valor médio"> <br>
+
+    <label for="ipt_Vazao">Vazão média do cano</label> 
+    <input type="text" id="ipt_Vazao" placeholder="OBS: Caso não souber vamos estipular um valor médio"> <br>
+
+    <label for="ipt_HorasParadas">Horas Paradas (desde a contenção até a volta da operação)</label> 
+    <input type="number" id="ipt_HorasParadas" placeholder="Horas"> <br>
+
+    <label for="ipt_NivelVazamento">Qual foi o nivel do vazamento? (Alerta/Evacuação)</label> 
+    <input type="text" id="ipt_NivelVazamento" placeholder="Alerta/Evacuação"> <br>
+
+    <button onclick="calcular()">Estimatiza do Prejuizo</button>
+    <button onclick="valores()">Visualizar valores estipulados para a realização do calculo</button>
+    <div id="exibir"></div>
 </body>
+<script>
+
+    function calcular(){
+        let QuantCarne = Number(ipt_QuantCarne.value)
+        let PrecoCarne = Number(ipt_PrecoCarne.value)
+        let Funcionarios = Number(ipt_Funcionarios.value)
+        let HoraFuncionario = Number(ipt_HoraFuncionario.value)
+        let HorasParadas = Number(ipt_HorasParadas.value)
+        let NivelVazamento = ipt_NivelVazamento.value
+        let TempoContencao = Number(ipt_Contencao.value)
+        let PrecoAmonia = Number(ipt_PrecoAmonia.value)
+        let Vazao = Number(ipt_Vazao.value)
+
+        if (PrecoAmonia == 0){
+            PrecoAmonia = 3.6
+            // Preço médio da amônia industrial em Kg
+        }
+        if (Vazao == 0){
+            Vazao = 12.5*60
+            // aqui estamos levando em consideração que o cano que faz a propagação tem 1 polegada com isso gerando um vazamento de 12.5 Kg/min
+        }
+        let PrejuizoCarne = QuantCarne * PrecoCarne
+        let PrejuizoMaoDeObra = Funcionarios * HoraFuncionario * HorasParadas
+        let PrejuizoAmonia = (TempoContencao*Vazao)*PrecoAmonia
+
+        let multa = 0
+        if (NivelVazamento == 'Evacuação') {
+            multa = 50000.00
+        }
+        let PrejuizoTotal = multa+PrejuizoCarne+PrejuizoMaoDeObra+PrejuizoAmonia
+
+        exibir.innerHTML = 
+        `<b style="color: red">=====================RELÁTORIO DE PREJUIZOS================<br>
+        Perda de Produto(Carnes): R$${PrejuizoCarne.toFixed(2)} <br>
+        Custo de Horas Ociosas: R$${PrejuizoMaoDeObra.toFixed(2)}<br>
+        Prejuízo Amônia: R$${PrejuizoAmonia.toFixed(2)}<br>
+        Multa Trabalhista (NR-36): R$${multa}<br>
+        PREJUÍZO TOTAL ESTIMADO: R$${PrejuizoTotal.toFixed(2)}<br>
+        ============================================================</b>`
+    }
+    function valores(){
+        let QuantCarne = Number(ipt_QuantCarne.value)
+        let PrecoCarne = Number(ipt_PrecoCarne.value)
+        let Funcionarios = Number(ipt_Funcionarios.value)
+        let HoraFuncionario = Number(ipt_HoraFuncionario.value)
+        let HorasParadas = Number(ipt_HorasParadas.value)
+        let NivelVazamento = ipt_NivelVazamento.value
+        let TempoContencao = Number(ipt_Contencao.value)
+        let PrecoAmonia = Number(ipt_PrecoAmonia.value)
+        let Vazao = Number(ipt_Vazao.value)
+
+        if (PrecoAmonia == 0){
+            PrecoAmonia = 3.6
+            // Preço médio da amônia industrial em Kg
+        }
+        if (Vazao == 0){
+            Vazao = 12.5*60
+            // aqui estamos levando em consideração que o cano que faz a propagação tem 1 polegada com isso gerando um vazamento de 12.5 Kg/min
+        }
+        let PrejuizoCarne = QuantCarne * PrecoCarne
+        let PrejuizoMaoDeObra = Funcionarios * HoraFuncionario * HorasParadas
+        let PrejuizoAmonia = (TempoContencao*Vazao)*PrecoAmonia
+
+        let multa = 0
+        if (NivelVazamento == 'Evacuação') {
+            multa = 50000.00
+        }
+        let PrejuizoTotal = multa+PrejuizoCarne+PrejuizoMaoDeObra+PrejuizoAmonia
+
+        exibir.innerHTML = 
+        `<b>
+        =====================VALORES ESTIPULADOS PARA A REALIZAÇÃO DOS CALCULOS ================<br>
+        Quantidade de Carne perdida: ${QuantCarne.toFixed(2)} <br>
+        Preço médio da Carne: R$${PrecoCarne.toFixed(2)}<br>
+        Quantidade de funcionários no local: ${Funcionarios.toFixed(2)}<br>
+        Valor médio da Hora dos funcionários: R$${HoraFuncionario.toFixed(2)}<br>
+        Horas Paradas: ${HorasParadas}<br>
+        Nivel do Vazamento: ${NivelVazamento}<br>
+        Tempo para Contencao: ${TempoContencao}<br>
+        Preco médio do Kg da Amônia: R$${PrecoAmonia}<br>
+        Nivel médio da Vazão do cano: ${Vazao}<br>
+        Multa Trabalhista (NR-36): R$${multa}<br>
+        PREJUÍZO TOTAL ESTIMADO: R$${PrejuizoTotal.toFixed(2)}<br>
+        ========================================================================================
+        </b>`
+    }
+</script>
 </html>

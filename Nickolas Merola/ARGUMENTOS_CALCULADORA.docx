@@ -1,0 +1,25 @@
+1. A Multa de R$ 50.000,00 (Norma Regulamentadora 28)
+A multa não sai do nada. No Brasil, qualquer infração de segurança do trabalho é calculada usando a NR-28 (Fiscalização e Penalidades), que cruza a gravidade do erro com o número de funcionários da empresa.
+Um vazamento com necessidade de evacuação fere a NR-36 (Segurança em Frigoríficos) no grau máximo (Infração Nível I4 - Risco de Morte/Intoxicação Grave). Dependendo do tamanho do frigorífico, a multa base passa de R$ 6.000 e, com agravantes (falta de equipamento adequado, não notificação), o Ministério Público do Trabalho (MPT) aplica Termos de Ajustamento de Conduta (TAC) que partem de R$ 50.000,00 e chegam a milhões.
+
+Onde pesquisar/baixar o PDF oficial: Portal oficial do Governo Federal (Gov.br) na seção de Normas Regulamentadoras.
+
+Link Oficial: gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/arquivos/normas-regulamentadoras/nr-28.pdf
+
+
+
+2. A Vazão do Cano (12.5 Kg/min)
+Esse é o dado mais técnico. A referência global para cálculo de vazamento de produtos químicos tóxicos vem da EPA (Agência de Proteção Ambiental dos Estados Unidos). Eles possuem um documento chamado Risk Management Program (RMP) Guidance, que tem uma fórmula exata (Offsite Consequence Analysis) para calcular quantos quilos de amônia vazam por minuto através de um orifício de 1 polegada sob pressão padrão de um compressor de frigorífico.
+
+Onde pesquisar/baixar o documento oficial: Site oficial da EPA (epa.gov). Eles possuem os apêndices de cálculo de vazamento (Release Rates).
+
+Link Oficial (Página do RMP para Amônia): epa.gov/rmp/guidance-facilities-ammonia-refrigeration-systems-under-risk-management-program
+
+
+3. Preço do Kg da Amônia Anidra (R$ 3,60)
+Amônia é uma "commodity" (matéria-prima) cotada em Dólar por Tonelada Métrica no mercado internacional de fertilizantes e químicos. O preço oscila todo mês. R$ 3,60 o quilo é uma média realista baseada na conversão de uma tonelada que custa em torno de US$ 500 a US$ 700. O banco de dados global IndexMundi ou os relatórios da ICIS (Chemical Intelligence) monitoram isso.
+
+Onde pesquisar: Você pode usar o IndexMundi, que puxa dados do Banco Mundial, para mostrar o gráfico de preços.
+
+Link Oficial: indexmundi.com/commodities/?commodity=ammonia
+
