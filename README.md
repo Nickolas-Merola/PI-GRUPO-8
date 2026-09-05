@@ -15,7 +15,7 @@ A solução realiza a leitura de dados por meio do sensor MQ-2 conectado a um mi
 ## Tecnologias Utilizadas
 * **Hardware:** Microcontrolador Arduino e Sensor de Gás MQ-2.
 * **Backend:** Banco de Dados MySQL.
-* **Frontend:** HTML5, CSS3, JavaScript e biblioteca Chart.js.
+* **Frontend:** HTML5, CSS3, JavaScript.
 
 ## Funcionalidades do Protótipo
 1. **Coleta de Dados:** Leitura contínua dos valores do pino analógico do sensor MQ-2.
