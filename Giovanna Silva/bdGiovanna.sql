@@ -16,7 +16,8 @@ CONSTRAINT chkEmail CHECK (email LIKE ('%@%'))
 
 INSERT INTO usuario (nomeCompleto, email, senha, telefone, cpf, tipoUsuario)  VALUES 
 ('Lorenzo dos Santos', 'lorenzo@gmail.com', '12345', '(11)12345-6789', '1234567891012', 'funcionário'),
-('Julia Vieira', 'Julinha@gmail.com', '2345', '(12)12345-6789', '2345678910111','administrador');
+('Julia Vieira', 'Julinha@gmail.com', '2345', '(12)12345-6789', '2345678910111','administrador'
+);
 
 ALTER TABLE usuario MODIFY nomeCompleto VARCHAR(100);
 
@@ -57,7 +58,8 @@ dataHora DATETIME DEFAULT CURRENT_TIMESTAMP);
     
 INSERT INTO leituraSensor (idSensor, nivelPPM) VALUES
 (1, 12),
-(2, 24.8);
+(2, 24.8)
+(3,21);
     
 DESCRIBE leituraSensor;
     
@@ -69,4 +71,4 @@ SELECT
         WHEN nivelPPM <= 10 THEN 'Normal'
         WHEN nivelPPM <= 20 THEN 'Atenção'
         WHEN nivelPPM > 20 THEN 'Crítico'
-	END , ' | Data e Hora: ' ,dataHora) AS mensagem FROM leituraSensor;
+	END , ' | Data e Hora: ' , dataHora) AS mensagem FROM leituraSensor;
