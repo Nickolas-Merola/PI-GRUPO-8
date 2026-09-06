@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Simulador Financeiro - Amônia Sense</title>
+</head>
+
+<body style="text-align: center;">
+
+    <!-- CABEÇALHO  -->
+    <h1 style="font-size: 32px;">AMONIA SENSE</h1>
+    <h2 style="font-size: 24px;">Simulador Financeiro</h2>
+    <br>
+
+    <!--  DADOS DE ENTRADA  -->
+    <!-- Formulário onde o usuário informa os dados da empresa
+         usados como base para todos os cálculos da simulação -->
+    <h3 style="font-size: 20px;">Informações da empresa</h3>
+
+    <label for="ipt_funcionarios" style="font-size: 18px;">
+        Quantos funcionários trabalham na sala de desossa?
+    </label>
+
+    <br>
+
+    <input type="text" id="ipt_funcionarios" value="100">
+
+    <br><br>
+
+    <label for="ipt_evaporadores" style="font-size: 18px;">
+        Quantos evaporadores existem na sala de desossa?
+    </label>
+
+    <br>
+
+    <input type="text" id="ipt_evaporadores" value="10">
+
+    <br><br>
+
+    <!-- Botão que dispara a função calcular() e preenche todos
+         os campos de resultado abaixo -->
+    <button onclick="calcular()">Calcular simulação</button>
+
+    <br><br>
+
+    <!--  RESULTADO DA SIMULAÇÃO  -->
+    <div style="font-size: 20px;">Resultado da simulação</div>
+
+    <!-- Impacto financeiro estimado 
+         Estima quanto custaria à empresa um incidente
+         (parada de produção) na sala de desossa -->
+    <h3 style="font-size: 20px;">Impacto financeiro estimado</h3>
+
+    <span style="font-size: 17px;">Custo estimado com funcionários:</span>
+    <br>
+    <div id="div_custoFuncionarios" style="font-size: 18px;">R$ 0,00</div>
+
+    <br>
+
+    <span style="font-size: 17px;">Valor estimado da produção afetada:</span>
+    <br>
+    <div id="div_custoProducao" style="font-size: 18px;">R$ 0,00</div>
+
+    <br>
+
+    <span style="font-size: 17px;">Outros custos relacionados ao incidente:</span>
+    <br>
+    <div id="div_outrosCustos" style="font-size: 18px;">R$ 0,00</div>
+
+    <br>
+
+    <!-- Soma dos três custos acima = impacto financeiro total -->
+    <div style="font-size: 20px;">Impacto financeiro estimado</div>
+
+    <h1 id="div_impacto" style="font-size: 30px;">R$ 0,00</h1>
+
+
+    <!-- Bloco 2: Investimento no sistema de monitoramento 
+         Estima quanto custaria instalar o sistema de sensores
+         de amônia para prevenir o incidente -->
+    <h3 style="font-size: 20px;">Investimento no sistema de monitoramento</h3>
+
+    <span style="font-size: 17px;">Sensores de amônia:</span>
+    <br>
+    <div id="div_custoSensores" style="font-size: 18px;">R$ 0,00</div>
+
+    <br>
+
+    <span style="font-size: 17px;">Gateway e equipamentos de comunicação:</span>
+    <br>
+    <div id="div_custoGateway" style="font-size: 18px;">R$ 0,00</div>
+
+    <br>
+
+    <span style="font-size: 17px;">Instalação e cabeamento:</span>
+    <br>
+    <div id="div_custoInstalacao" style="font-size: 18px;">R$ 0,00</div>
+
+    <br>
+
+    <span style="font-size: 17px;">Desenvolvimento e implantação do sistema:</span>
+    <br>
+    <div id="div_custoSistema" style="font-size: 18px;">R$ 0,00</div>
+
+    <br><br>
+
+    <!-- Soma dos quatro custos acima = investimento total necessário -->
+    <div style="font-size: 20px;">Investimento total</div>
+
+    <h1 id="div_investimento" style="font-size: 30px;">R$ 0,00</h1>
+
+
+    <!--  Bloco 3: Comparação 
+         Compara o impacto financeiro estimado (Bloco 1) com o
+         investimento necessário (Bloco 2), mostrando que percentual
+         do prejuízo o investimento representa -->
+    <div style="font-size: 20px;">Comparação</div>
+
+    <br>
+
+    <span style="font-size: 17px;">Impacto financeiro estimado:</span>
+    <br>
+    <div id="div_comparacaoImpacto" style="font-size: 18px;">R$ 0,00</div>
+
+    <br>
+
+    <span style="font-size: 17px;">Investimento necessário para o monitoramento:</span>
+    <br>
+    <div id="div_comparacaoInvestimento" style="font-size: 18px;">R$ 0,00</div>
+
+    <br>
+
+    <span style="font-size: 17px;">O investimento corresponde aproximadamente a:</span>
+    <br>
+    <div id="div_porcentagem" style="font-size: 22px;">0.00%</div>
+
+    <span style="font-size: 17px;">do impacto financeiro estimado.</span>
+
+    <br><br>
+
+
+    <script>
+
+        function calcular() {
+
+            //  LEITURA DOS DADOS 
+            // Converte os valores digitados pelo usuário (texto) em números
+            let qtdFuncionarios = Number(ipt_funcionarios.value);
+            let qtdEvaporadores = Number(ipt_evaporadores.value);
+
+
+            //  CÁLCULO DO IMPACTO FINANCEIRO 
+
+            // --- Custo com funcionários parados durante o incidente ---
+            let salarioMedio = 2500;                                   // salário médio mensal (R$)
+            let diasTrabalhados = 22;                                  // dias úteis considerados no mês
+            let custoDiarioFuncionario = salarioMedio / diasTrabalhados; // custo diário por funcionário
+            let valorCustoFuncionarios = qtdFuncionarios * custoDiarioFuncionario;
+
+            // --- Valor da produção que deixaria de ser gerada ---
+            let producaoPorFuncionario = 1500;                         // valor de produção por funcionário (R$)
+            let valorCustoProducao = qtdFuncionarios * producaoPorFuncionario;
+
+            // --- Outros custos fixos relacionados ao incidente (limpeza, multas, etc.) ---
+            let valorOutrosCustos = 10000;
+
+            // --- Impacto financeiro total estimado ---
+            let valorImpacto = valorCustoFuncionarios + valorCustoProducao + valorOutrosCustos;
+
+
+            // CÁLCULO DO INVESTIMENTO NECESSÁRIO 
+
+            // --- Sensores de amônia (um por evaporador) ---
+            let valorSensor = 3000;                                    // preço unitário do sensor (R$)
+            let valorCustoSensores = qtdEvaporadores * valorSensor;
+
+            // --- Gateway e equipamentos de comunicação (valor fixo) ---
+            let valorCustoGateway = 5000;
+
+            // --- Instalação e cabeamento (por evaporador) ---
+            let instalacaoPorEvaporador = 1000;
+            let valorCustoInstalacao = qtdEvaporadores * instalacaoPorEvaporador;
+
+            // --- Desenvolvimento e implantação do sistema (valor fixo) ---
+            let valorCustoSistema = 10000;
+
+            // --- Investimento total necessário ---
+            let valorInvestimento = valorCustoSensores + valorCustoGateway + valorCustoInstalacao + valorCustoSistema;
+
+
+            // COMPARAÇÃO 
+            // Percentual que o investimento representa em relação ao impacto financeiro
+            let porcentagemInvestimento = (valorInvestimento / valorImpacto) * 100;
+
+            // Limita a exibição a no máximo 100%
+            if (porcentagemInvestimento > 100) {
+                porcentagemInvestimento = 100;
+            }
+
+
+            //  EXIBIÇÃO DOS RESULTADOS NA TELA 
+
+            // -- Impacto financeiro --
+            div_custoFuncionarios.innerHTML =
+                `R$ ${valorCustoFuncionarios.toFixed(2)}`;
+
+            div_custoProducao.innerHTML =
+                `R$ ${valorCustoProducao.toFixed(2)}`;
+
+            div_outrosCustos.innerHTML =
+                `R$ ${valorOutrosCustos.toFixed(2)}`;
+
+            div_impacto.innerHTML =
+                `R$ ${valorImpacto.toFixed(2)}`;
+
+            // -- Investimento no sistema de monitoramento --
+            div_custoSensores.innerHTML =
+                `R$ ${valorCustoSensores.toFixed(2)}`;
+
+            div_custoGateway.innerHTML =
+                `R$ ${valorCustoGateway.toFixed(2)}`;
+
+            div_custoInstalacao.innerHTML =
+                `R$ ${valorCustoInstalacao.toFixed(2)}`;
+
+            div_custoSistema.innerHTML =
+                `R$ ${valorCustoSistema.toFixed(2)}`;
+
+            div_investimento.innerHTML =
+                `R$ ${valorInvestimento.toFixed(2)}`;
+
+            // -- Comparação --
+            div_comparacaoImpacto.innerHTML =
+                `R$ ${valorImpacto.toFixed(2)}`;
+
+            div_comparacaoInvestimento.innerHTML =
+                `R$ ${valorInvestimento.toFixed(2)}`;
+
+            div_porcentagem.innerHTML =
+                `${porcentagemInvestimento.toFixed(2)}%`;
+
+        }
+
+    </script>
+
+</body>
+
+</html>

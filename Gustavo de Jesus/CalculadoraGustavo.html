@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=w, initial-scale=1.0" />
+    <title>Calculadora de custo de manutenção</title>
+  </head>
+  <body>
+    <h2>Calculadora de custo de manutenção</h2>
+    <label for="ipt_hora">O reparo levou quantas horas?</label>
+    <input type="number" id="ipt_hora" /> <br />
+
+    <span>Selecione uma categoria: </span>
+    <button onclick="dia()"><b>DIA</b></button>
+    <button onclick="noite()"><b>NOITE</b></button>
+    <button onclick="feriado()"><b>FERIADO</b></button>
+
+    <h3>Qual o porte do seu frigorifeco?</h3>
+
+    <button onclick="pequeno()"><b>PEQUENO</b></button>
+    <i>Até 300 cabeças por dia</i> <br />
+    <br>
+    <button onclick="medio()"><b>MÉDIO</b></button>
+    <i>De 300 a 800 cabeças por dia</i> <br />
+    <br>
+    <button onclick="grande()"><b>GRANDE</b></button>
+    <i>Acima de 1000 cabeças por dia</i> <br />
+    <br>
+    <div id="div_exibir"></div>
+  </body>
+</html>
+<script>
+  // taxa fixa de chamado técnico emergencial
+  let valorDaHoraDesteTurno = 0;
+
+  function dia() {
+    valorDaHoraDesteTurno = Number(180);
+    alert(
+      `Turno DIA selecionado (R$ ${valorDaHoraDesteTurno}/h). Agora selecione o porte da sua empresa.`,
+    );
+  }
+
+  function noite() {
+    valorDaHoraDesteTurno = Number(270);
+    alert(
+      `Turno NOITE selecionado (R$ ${valorDaHoraDesteTurno}/h). Agora selecione o porte da sua empresa.`,
+    );
+  }
+
+  function feriado() {
+    valorDaHoraDesteTurno = Number(360);
+    alert(
+      `Turno FERIADO selecionado (R$ ${valorDaHoraDesteTurno}/h). Agora selecione o porte da sua empresa.`,
+    );
+  }
+
+  function pequeno() {
+    let hrDigitada = Number(ipt_hora.value);
+    let taxaEmergencial = Number(2500);
+
+    if (valorDaHoraDesteTurno == 0) {
+      div_exibir.innerHTML = `Por favor, selecione uma categoria.`;
+    }
+
+    let custoHr = valorDaHoraDesteTurno * hrDigitada;
+
+    let custoTotal = (custoHr + taxaEmergencial).toFixed(2);
+
+    div_exibir.innerHTML = `A taxa emergencial será de R$${taxaEmergencial.toFixed(2)}, as horas de reparo irão custar R$${custoHr.toFixed(2)} <br>
+    totalizando R$${custoTotal}`;
+  }
+
+  function medio() {
+    let hrDigitada = Number(ipt_hora.value);
+    let taxaEmergencial = Number(5000);
+
+    if (valorDaHoraDesteTurno == 0) {
+      div_exibir.innerHTML = `Por favor, selecione uma categoria.`;
+    }
+
+    let custoHr = (valorDaHoraDesteTurno * hrDigitada) * 1.9444; // representação de +94,44 em relação ao valor cobrado em uma de porte pequeno
+
+    let custoTotal = (custoHr + taxaEmergencial).toFixed(2);
+
+    div_exibir.innerHTML = `A taxa emergencial será de R$${taxaEmergencial.toFixed(2)}, as horas de reparo irão custar R$${custoHr.toFixed(2)} <br>
+    totalizando R$${custoTotal}`;
+  }
+
+  function grande() {
+    let hrDigitada = Number(ipt_hora.value);
+    let taxaEmergencial = Number(12000);
+
+    if (valorDaHoraDesteTurno == 0) {
+      div_exibir.innerHTML = `Por favor, selecione uma categoria.`;
+    }
+
+    let custoHr = (valorDaHoraDesteTurno * hrDigitada) * 4.167; // representação de +316,67% em relação ao valor cobrado em uma de porte pequeno
+
+    let custoTotal = (custoHr + taxaEmergencial).toFixed(2);
+
+    div_exibir.innerHTML = `A taxa emergencial será de R$${taxaEmergencial.toFixed(2)}, as horas de reparo irão custar R$${custoHr.toFixed(2)} <br>
+    totalizando R$${custoTotal}`;
+  }
+</script>
