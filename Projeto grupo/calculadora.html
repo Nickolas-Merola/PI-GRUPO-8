@@ -16,7 +16,6 @@
     </span>
     <br><br>
 
-    <!-- ===================== BLOCO 1: CUSTO DO HARDWARE ===================== -->
     <div>
         <h2>1. Custo de Implantação do Sistema de Sensores</h2>
         <span>
@@ -34,7 +33,6 @@
         <div id="div_msgHardware"></div>
     </div>
 
-    <!-- ===================== BLOCO 2: PASSIVO TRABALHISTA ===================== -->
     <div>
         <h2 style="color: #8c3b1b">2. Passivo Trabalhista por Exposição à Amônia</h2>
         <span>
@@ -57,7 +55,6 @@
         <div id="div_msgTrabalhista"></div>
     </div>
 
-    <!-- ===================== BLOCO 3: ECONOMIA / FATURAMENTO ===================== -->
     <div>
         <h2>3. Economia Gerada em Caso de Acidente Evitado</h2>
         <span>
@@ -89,7 +86,6 @@
 </body>
 </html>
 <script>
-    // ===================== CALCULADORA 1: CUSTO DO HARDWARE =====================
     let custoSensor = 45;
     let custoInstalacao = 120;
 
@@ -106,7 +102,6 @@
         `;
     }
 
-    // ===================== CALCULADORA 2: PASSIVO TRABALHISTA =====================
     function calcularTrabalhista(){
         let numeroFuncionarios = Number(input_numeroFuncionarios.value);
         let mesesExpo = Number(input_mesesExpo.value);
@@ -125,7 +120,6 @@
         `;
     }
 
-    // ===================== CALCULADORA 3: ECONOMIA / FATURAMENTO =====================
     function calcularEconomia(){
         let pesoBovino = Number(input_pesoBovino.value);
         let custoKg = Number(input_custokg.value);
