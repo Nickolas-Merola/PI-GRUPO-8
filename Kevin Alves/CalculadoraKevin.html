@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financeira Kevin</title>
+</head>
+
+<body>
+    <h1>CALCULADORA FINANCEIRA</h1>
+    <h2>Monitoramento de vazamento de amônia em sala de desossa de um frigorífico</h2> <br>
+
+    <h3>Dados operacionais da sala de Desossa</h3>
+
+    <label for="ipt_carneExposta">Quantidade de carne exposta por hora (em kg): </label>
+    <input type="text" id="ipt_carneExposta" placeholder="Ex: 500"> <br> <br>
+
+    <label for="ipt_precoMedio">Preço médio do quilo da carne - R$:</label>
+    <input type="text" id="ipt_precoMedio" placeholder="Ex: 35"> <br> <br>
+
+    <label for="ipt_qtdFuncionario">Quantidade de funcionários no local: </label>
+    <input type="text" id="ipt_qtdFuncionario" placeholder="Ex: 100"> <br> <br>
+
+    <label for="ipt_custoMedio">Custo médio por hora de cada funcionário - R$: </label>
+    <input type="text" id="ipt_custoMedio" placeholder="Ex: 50"> <br> <br>
+
+    <h3>Deseja calcular a simulação com qual opção?</h3>
+
+    <button onclick="semSensor()">Detecção SEM Sensor</button>
+    <button onclick="comSensor()">Detecção COM Sensor</button>
+    <button onclick="ambos()">Comparar os dois cenários</button>
+
+    <div id="exibir"></div>
+</body>
+
+</html>
+
+<script>
+    let cmSensor = 0.1; // 6 minutos de detecção
+    let smSensor = 3;   // 3 horas de detecção manual
+
+    function semSensor() {
+        let qtdFuncio = Number(ipt_qtdFuncionario.value);
+        let custoMedio = Number(ipt_custoMedio.value);
+        let carneExposta = Number(ipt_carneExposta.value);
+        let kiloMedio = Number(ipt_precoMedio.value);
+
+        let custoHora = qtdFuncio * custoMedio;
+        let paralisacao = smSensor + 2; // 3h vazamento + 2h limpeza
+        let prejuFuncio = custoHora * paralisacao;
+
+        let carnePerdida = carneExposta * kiloMedio * smSensor;
+        let prejuTotal = carnePerdida + prejuFuncio;
+
+        exibir.innerHTML = `
+            <br> <b>Cenário SEM o Sensor (Operação Manual)</b> <br><br>
+            - Tempo total até contenção e liberação: <b>${paralisacao} horas</b> (3h vazamento + 2h limpeza) <br>
+            - Carne perdida: R$ <span style="color: red">${carnePerdida.toFixed(2)}</span> <br>
+            - Prejuízo de mão de obra parada: R$ <span style="color: red">${prejuFuncio.toFixed(2)}</span> <br><br>
+            <b>Prejuízo Total Sem Sensor: <span style="color: red">R$ ${prejuTotal.toFixed(2)}</span></b>
+        `;
+    }
+
+    function comSensor() {
+        let qtdFuncio = Number(ipt_qtdFuncionario.value);
+        let custoMedio = Number(ipt_custoMedio.value);
+        let carneExposta = Number(ipt_carneExposta.value);
+        let kiloMedio = Number(ipt_precoMedio.value);
+
+        let custoHora = qtdFuncio * custoMedio;
+        let paralisacao = cmSensor + 2; // 0.1h vazamento + 2h limpeza
+        let prejuFuncio = custoHora * paralisacao;
+
+        let carnePerdida = carneExposta * kiloMedio * cmSensor;
+        let prejuTotal = carnePerdida + prejuFuncio;
+
+        exibir.innerHTML = `
+            <br> <b>Cenário COM o Sensor (Operação Automática)</b> <br><br>
+            - Tempo total até contenção e liberação: <b>${paralisacao} horas</b> (6min vazamento + 2h limpeza) <br>
+            - Carne perdida: R$ <span style="color: red">${carnePerdida.toFixed(2)}</span> <br>
+            - Prejuízo de mão de obra parada: R$ <span style="color: red">${prejuFuncio.toFixed(2)}</span> <br><br>
+            <b>Prejuízo Total Com Sensor: R$ <span style="color: red">${prejuTotal.toFixed(2)}</span></b>
+        `;
+    }
+
+    function ambos() {
+        let qtdFuncio = Number(ipt_qtdFuncionario.value);
+        let custoMedio = Number(ipt_custoMedio.value);
+        let carneExposta = Number(ipt_carneExposta.value);
+        let kiloMedio = Number(ipt_precoMedio.value);
+
+        let custoHora = qtdFuncio * custoMedio;
+
+        // --- CÁLCULO SEM SENSOR ---
+        let paralisacaoSem = smSensor + 2;
+        let carneSem = carneExposta * kiloMedio * smSensor;
+        let funcioSem = custoHora * paralisacaoSem;
+        let totalSem = carneSem + funcioSem;
+
+        // --- CÁLCULO COM SENSOR ---
+        let paralisacaoCom = cmSensor + 2;
+        let carneCom = carneExposta * kiloMedio * cmSensor;
+        let funcioCom = custoHora * paralisacaoCom;
+        let totalCom = carneCom + funcioCom;
+
+        // --- ECONOMIA GERADA ---
+        let economia = totalSem - totalCom;
+
+        exibir.innerHTML = `
+            <h3>Comparativo de Cenários em Caso de Vazamento</h3>
+            
+            <b>1. Cenário SEM o Sensor (Manual):</b> <br>
+            - Tempo de contenção + limpeza: <b>${paralisacaoSem} horas</b> <br>
+            - Carne perdida: R$ ${carneSem.toFixed(2)} <br>
+            - Mão de obra parada: R$ ${funcioSem.toFixed(2)} <br>
+            - <b style="color: red;">Prejuízo Total: R$ ${totalSem.toFixed(2)}</b> <br><br>
+
+            <b>2. Cenário COM o Sensor (Automático):</b> <br>
+            - Tempo de contenção + limpeza: <b>${paralisacaoCom} horas</b> <br>
+            - Carne perdida: R$ ${carneCom.toFixed(2)} <br>
+            - Mão de obra parada: R$ ${funcioCom.toFixed(2)} <br>
+            - <b>Prejuízo Total: R$ ${totalCom.toFixed(2)}</b> <br><br>
+
+            <hr>
+            <h3 style="color: green;"><b>Economia Gerada pelo Sensor: R$ ${economia.toFixed(2)}</b></h3>
+            <p><i>Ao instalar o sensor, a empresa evita perder esse valor em um único incidente de vazamento.</i></p>
+        `;
+    }
+</script>
