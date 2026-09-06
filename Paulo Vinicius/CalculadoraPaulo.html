@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro</title>
+</head>
+<body>
+    <h1>Simulador Financeiro</h1>
+    <span>Com base no modelo de negócio do frigorífico, simule a economia dos custos da sua empresa com o Sistema de Monitoramento AmoniaSense na Sala de Desossa.</span>
+
+    <h2>Calculadora de Faturamento</h2><br>
+    <span>Por dia, na desossa, o frigorífico tem capacidade para quantos bovinos?</span>
+    <input placeholder="Exemplo:3000" type="number" id="input_capacidade"><br><br>
+    <span>Quantos turnos tem a operação no setor?</span>
+    <input placeholder="Exemplo: 3"type="number" id="input_turnos"><br><br>
+    <span>Quantos funcionários há por turno?</span>
+    <input placeholder="Exemplo: 300" type="number" id="input_funcionarios"><br><br>
+    <span>Quantos acidentes com amônia na desossa a sua empresa registrou no último ano?</span>
+    <input placeholder="Exemplo: 3" type="number" id="input_acidentes"><br><br>
+    <span style="font-weight: bold">Campos Avançados Pré-Definidos:</span><br><br>
+    <span>Qual é o peso médio(kg) da carcaça bovina após o abate?</span>
+    <input value="267.3" placeholder="Exemplo: 267.3" type="number" id="input_pesoBovino"><br><br>
+    <span>Qual o custo(R$) do bovino por kg?</span>
+    <input value="23.00" placeholder="Exemplo: 23.00" type="number" id="input_custokg"><br><br>
+    <span>Quantos minutos em média uma carcaça bovina fica na sala de desossa até virar corte pronto?</span>
+    <input value="20" placeholder="Exemplo: 20" type="number" id="input_minutosProcessamento"><br><br>
+    <button onclick="calcular()">Calcular Economia</button><br><br>
+    <div id="div_mensagem"></div>
+
+
+</body>
+</html>
+<script>
+    function calcular(){
+        let pesoBovino = Number(input_pesoBovino.value)
+        let custoKg = Number(input_custokg.value);
+        let tempoEsteiraTurno = 7.5;
+        let capacidadeDiaria = Number(input_capacidade.value);
+        let turnos = Number(input_turnos.value);
+        let capacidadeTurno = capacidadeDiaria / turnos;
+        let tonTurno = capacidadeTurno * pesoBovino;
+        let tonHora = tonTurno / tempoEsteiraTurno;
+        let tonMinuto = tonHora / 60;
+        let minutosProcessamento = Number(input_minutosProcessamento.value);
+        let kgProcessamento = tonMinuto * minutosProcessamento;
+        let custoProcessamento = kgProcessamento * custoKg; 
+        let fatTurno = tonTurno * custoKg;
+        let fatDiario = fatTurno * turnos;
+        let fatHora = fatTurno / tempoEsteiraTurno;
+        let totalEconomia = fatDiario + custoProcessamento;
+        let qtdFuncionarios = Number(input_funcionarios.value);
+        let qtdAcidentes = Number(input_acidentes.value) * totalEconomia;
+        let mensagem = `Baseado nos dados da operação de desossa do frigorífico da sua empresa, identificamos que a falta de um sistema de monitoramento automatizado de amônia 
+        representa um alto risco financeiro.<br><br>
+        <b>Prejuízo Estimado sem um sistema de monitoramento dedicado:</b><br><br>
+        <span style="color:red"> ❌ Queda no faturamento de -R$${fatHora.toFixed(2)} por hora de esteira paralisada.<br>
+        ❌ Queda no faturamento de -R$${fatTurno.toFixed(2)} por turno interrompido.<br>
+        ❌ Prejuízo bruto no faturamento de -R$${fatDiario.toFixed(2)} por dia parado. (Baseado em ${turnos} turnos paralisados por acidentes)<br>
+        ❌ Prejuízo da Carga de Bovinos Contaminada de -R$${custoProcessamento.toFixed(2)} por ${kgProcessamento.toFixed(1)}kg perdidos. (Baseado em ${minutosProcessamento} minutos de permanência da carga na desossa)<br>
+        ❌ Prejuízo Total Estimado: -R$${totalEconomia.toFixed(2)}.<br><br></span>
+        <i>Acidentes com amônia podem comprometer a saúde de seus funcionários, aumentam o risco de processos trabalhistas, gera multas de orgãos fiscalizadores e leva a paralisação da produção por tempo indeterminado.</i><br><br>
+        
+        <b>Economia Gerada com o Sistema de Monitoramento AmoniaSense:</b><br><br>
+        Custo com o Monitoramento AmoniaSense: R$0,00 - A detecção e monitoramento a partir de 0ppm permite resolver o problema sem parar a produção.<br>
+        <span style="color: darkgreen">✅ Sua Empresa tem uma Economia Direta por Acidente Estimada em:+R$${totalEconomia.toFixed(2)}<br>
+        ✅ No último ano, teria economizado com acidentes: +R$${qtdAcidentes.toFixed(2)}<br>
+        ✅ Elimina o tempo de paralisação da produção.<br>
+        ✅ Evita acidentes com vazamentos de amônia.<br>
+        🛡️ Proteção de Vidas: Os ${qtdFuncionarios} funcionários da desossa estarão protegidos contra
+        intoxicações crônicas e sua empresa reduz significativamente o risco de processos trabalhistas.</span><br><br>
+        Nós podemos ajudar sua empresa a evitar esses danos identificando vazamentos rapidamente!<br><br>`;
+
+        div_mensagem.innerHTML = mensagem;
+
+    }
+
+</script>
