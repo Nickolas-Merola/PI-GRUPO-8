@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AmoniaSense - Calculadora de Custos</title>
+</head>
+<body style="background-color: #f4ede4; color: #2b2b2b">
+
+    <h1 style="color: #8c3b1b">AMONIASENSE: CALCULADORA DE CUSTOS DA SALA DE DESOSSA</h1>
+    <span>
+        Esta ferramenta reúne três simulações financeiras relacionadas ao risco de vazamento de amônia
+        na sala de desossa do frigorífico e ao investimento necessário para preveni-lo com o sistema
+        de monitoramento AmoniaSense. Preencha os campos de cada bloco e clique no botão correspondente
+        para visualizar o resultado daquela calculadora.
+    </span>
+    <br><br>
+
+    <!-- ===================== BLOCO 1: CUSTO DO HARDWARE ===================== -->
+    <div>
+        <h2>1. Custo de Implantação do Sistema de Sensores</h2>
+        <span>
+            Estime o investimento necessário para instalar o sistema de monitoramento de amônia
+            na sua sala de desossa, com base no número de evaporadores existentes e na quantidade
+            de sensores previstos por evaporador.
+        </span>
+        <br><br>
+
+        <label for="input_evaporadores">Número de evaporadores na sala de desossa:</label>
+        <input placeholder="Exemplo: 4" type="number" id="input_evaporadores"><br><br>
+        <label for="input_sensores">Número de sensores por evaporador:</label>
+        <input placeholder="Exemplo: 2" type="number" id="input_sensores"><br><br>
+        <button onclick="calcularHardware()"style="background-color: #8c3b1b; color: white; font-weight: bold">Calcular Custo do Sistema</button><br><br>
+        <div id="div_msgHardware"></div>
+    </div>
+
+    <!-- ===================== BLOCO 2: PASSIVO TRABALHISTA ===================== -->
+    <div>
+        <h2 style="color: #8c3b1b">2. Passivo Trabalhista por Exposição à Amônia</h2>
+        <span>
+            Estime o valor do adicional de insalubridade devido aos funcionários que ficam expostos
+            à amônia acima do limite legal de tolerância (20 ppm) na sala de desossa, sem um sistema
+            de monitoramento contínuo em operação.
+        </span>
+        <br><br>
+
+        <label for="input_numeroFuncionarios" style="font-weight: bold">Número de funcionários expostos à amônia na sala de desossa:</label>
+        <input placeholder="Ex: 20" type="number" id="input_numeroFuncionarios"><br><br>
+
+        <label for="input_mesesExpo" style="font-weight: bold">Há quantos meses (estimativa) essa exposição ocorre sem monitoramento?</label>
+        <input placeholder="Ex: 18" type="number" id="input_mesesExpo">
+        <br>
+        <i>A legislação trabalhista permite cobrança retroativa de, no máximo, 5 anos (60 meses).</i>
+        <br><br>
+
+        <button onclick="calcularTrabalhista()" style="background-color: #8c3b1b; color: white; font-weight: bold">Calcular Passivo Trabalhista</button>
+        <div id="div_msgTrabalhista"></div>
+    </div>
+
+    <!-- ===================== BLOCO 3: ECONOMIA / FATURAMENTO ===================== -->
+    <div>
+        <h2>3. Economia Gerada em Caso de Acidente Evitado</h2>
+        <span>
+            Com base no modelo de negócio do frigorífico, simule a economia de custos da sua empresa
+            ao evitar a paralisação da produção e a perda de carga na sala de desossa, comparando o
+            cenário com e sem o sistema de monitoramento AmoniaSense.
+        </span>
+        <br><br>
+
+        <span>Por dia, na desossa, o frigorífico tem capacidade para quantos bovinos?</span>
+        <input placeholder="Exemplo:3000" type="number" id="input_capacidade"><br><br>
+        <span>Quantos turnos tem a operação no setor?</span>
+        <input placeholder="Exemplo: 3" type="number" id="input_turnos"><br><br>
+        <span>Quantos funcionários há por turno?</span>
+        <input placeholder="Exemplo: 300" type="number" id="input_funcionarios"><br><br>
+        <span>Quantos acidentes com amônia na desossa a sua empresa registrou no último ano?</span>
+        <input placeholder="Exemplo: 3" type="number" id="input_acidentes"><br><br>
+        <span style="font-weight: bold">Campos Avançados Pré-Definidos:</span><br><br>
+        <span>Qual é o peso médio(kg) da carcaça bovina após o abate?</span>
+        <input value="267.3" placeholder="Exemplo: 267.3" type="number" id="input_pesoBovino"><br><br>
+        <span>Qual o custo(R$) do bovino por kg?</span>
+        <input value="23.00" placeholder="Exemplo: 23.00" type="number" id="input_custokg"><br><br>
+        <span>Quantos minutos em média uma carcaça bovina fica na sala de desossa até virar corte pronto?</span>
+        <input value="20" placeholder="Exemplo: 20" type="number" id="input_minutosProcessamento"><br><br>
+        <button onclick="calcularEconomia()" style="background-color: #8c3b1b; color: white; font-weight: bold">Calcular Economia</button><br><br>
+        <div id="div_msgEconomia"></div>
+    </div>
+
+</body>
+</html>
+<script>
+    // ===================== CALCULADORA 1: CUSTO DO HARDWARE =====================
+    let custoSensor = 45;
+    let custoInstalacao = 120;
+
+    function calcularHardware(){
+        let evaporadores = Number(input_evaporadores.value);
+        let sensores = Number(input_sensores.value);
+        let totalSensores = evaporadores * sensores;
+        let custoPorSensor = custoSensor + custoInstalacao;
+        let custoTotal = totalSensores * custoPorSensor;
+
+        div_msgHardware.innerHTML = `
+            Total de sensores necessários: <b>${totalSensores}</b><br>
+            Custo estimado de implantação do sistema: <b>R$ ${custoTotal.toFixed(2)}</b>
+        `;
+    }
+
+    // ===================== CALCULADORA 2: PASSIVO TRABALHISTA =====================
+    function calcularTrabalhista(){
+        let numeroFuncionarios = Number(input_numeroFuncionarios.value);
+        let mesesExpo = Number(input_mesesExpo.value);
+
+        if (mesesExpo > 60){
+            mesesExpo = 60;
+        }
+
+        let valor = numeroFuncionarios * 324.2 * mesesExpo;
+        let valorComReflexos = valor * 1.27;
+
+        div_msgTrabalhista.innerHTML = `
+            Adicional de insalubridade estimado: <b>R$ ${valor.toFixed(2)}</b><br>
+            Com reflexos (13º salário, férias e FGTS): <b>R$ ${valorComReflexos.toFixed(2)}</b><br>
+            <i>Valor estimado, considerando o teto legal de 60 meses de retroatividade.</i>
+        `;
+    }
+
+    // ===================== CALCULADORA 3: ECONOMIA / FATURAMENTO =====================
+    function calcularEconomia(){
+        let pesoBovino = Number(input_pesoBovino.value);
+        let custoKg = Number(input_custokg.value);
+        let tempoEsteiraTurno = 7.5;
+        let capacidadeDiaria = Number(input_capacidade.value);
+        let turnos = Number(input_turnos.value);
+        let capacidadeTurno = capacidadeDiaria / turnos;
+        let tonTurno = capacidadeTurno * pesoBovino;
+        let tonHora = tonTurno / tempoEsteiraTurno;
+        let tonMinuto = tonHora / 60;
+        let minutosProcessamento = Number(input_minutosProcessamento.value);
+        let kgProcessamento = tonMinuto * minutosProcessamento;
+        let custoProcessamento = kgProcessamento * custoKg;
+        let fatTurno = tonTurno * custoKg;
+        let fatDiario = fatTurno * turnos;
+        let fatHora = fatTurno / tempoEsteiraTurno;
+        let totalEconomia = fatDiario + custoProcessamento;
+        let qtdFuncionarios = Number(input_funcionarios.value);
+        let qtdAcidentes = Number(input_acidentes.value) * totalEconomia;
+
+        div_msgEconomia.innerHTML = `
+            Baseado nos dados informados sobre a operação de desossa, a falta de um sistema de
+            monitoramento automatizado de amônia representa um alto risco financeiro.<br><br>
+            <b>Prejuízo estimado sem um sistema de monitoramento dedicado:</b><br>
+            <span style="color:red">
+                ❌ Queda de faturamento de -R$ ${fatHora.toFixed(2)} por hora de esteira paralisada.<br>
+                ❌ Queda de faturamento de -R$ ${fatTurno.toFixed(2)} por turno interrompido.<br>
+                ❌ Prejuízo bruto de -R$ ${fatDiario.toFixed(2)} por dia parado (baseado em ${turnos} turnos).<br>
+                ❌ Prejuízo da carga contaminada de -R$ ${custoProcessamento.toFixed(2)}, referente a ${kgProcessamento.toFixed(1)} kg perdidos.<br>
+                ❌ Prejuízo total estimado por acidente: -R$ ${totalEconomia.toFixed(2)}.
+            </span><br><br>
+            <b>Economia estimada com o sistema de monitoramento AmoniaSense:</b><br>
+            <span style="color: darkgreen">
+                ✅ Economia direta estimada por acidente evitado: +R$ ${totalEconomia.toFixed(2)}<br>
+                ✅ Economia estimada considerando os acidentes do último ano: +R$ ${qtdAcidentes.toFixed(2)}<br>
+                ✅ Redução do tempo de paralisação da produção.<br>
+                🛡️ Proteção de vidas: os ${qtdFuncionarios} funcionários do turno ficam protegidos contra
+                a exposição à amônia acima do limite seguro.
+            </span>
+        `;
+    }
+</script>
