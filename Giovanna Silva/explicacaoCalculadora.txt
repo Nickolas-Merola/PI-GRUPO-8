@@ -1,0 +1,49 @@
+Calculadora de Passivo Trabalhista — Adicional de Insalubridade por Amônia
+1. O que é
+
+Em frigoríficos, a amônia é o gás usado na refrigeração das câmaras e salas de desossa. Quando vaza acima do limite seguro, os funcionários expostos passam a ter direito, por lei, a um adicional salarial — o adicional de insalubridade. Esta calculadora estima esse valor retroativo, mostrando quanto a falta de monitoramento pode custar à empresa.
+
+2. Termos essenciais
+Insalubridade: condição de trabalho definida por lei como prejudicial à saúde, medida tecnicamente (não por opinião).
+NR-15, Anexo 11: norma que lista as substâncias químicas insalubres e seus limites. A amônia tem grau médio (fixo) e limite de tolerância de 20 ppm (partes de gás por milhão de partes de ar).
+Adicional de insalubridade: valor extra que o funcionário recebe enquanto durar a exposição irregular. Para grau médio: 20% sobre o salário mínimo = R$ 324,20/mês (2026), por funcionário.
+Retroativo: se a empresa nunca pagou, o funcionário cobra os meses passados, não só o atual. Aplica-se a exposição contínua/habitual, apurada por investigação — não a vazamentos pontuais e isolados (esses seguem outra via jurídica, fora do escopo desta calculadora).
+Prescrição trabalhista: teto legal de 5 anos (60 meses) para cobrança retroativa.
+Reflexos trabalhistas: o adicional também aumenta férias, 13º e FGTS, cada um com percentual fixo em lei: 8,33% + 11,11% + 8% = 27,44% — um valor exato, não estimativa.
+3. Base legal
+CLT, art. 189: define insalubridade.
+CLT, art. 192: fixa os percentuais do adicional (10/20/40%).
+NR-15, Anexo 11, Quadro 1: classifica a amônia como grau médio, limite de 20 ppm.
+4. Como o tempo de exposição é apurado
+
+Funcionário denuncia, ou há fiscalização de rotina → investigação é aberta (Ministério do Trabalho ou Justiça do Trabalho) → laudo técnico cruza manutenção, relatos e prontuários médicos → o período de exposição é apurado. Esse número apurado é o dado de entrada da calculadora.
+
+5. Fórmula
+Valor bruto = R$ 324,20 × nº de funcionários expostos × nº de meses (máx. 60)
+Valor com reflexos = Valor bruto × 1,2744
+
+Exemplo: 10 funcionários, 18 meses apurados.
+
+Valor bruto = 324,20 × 10 × 18 = R$ 58.356,00
+Com reflexos = 58.356,00 × 1,2744 = R$ 74.372,45
+6. Por que essa conta importa
+
+É o cálculo com base legal mais sólida do projeto — valor fixo, sem margem de discórdia técnica. Ele mostra que a falta de monitoramento não é só risco de segurança abstrato: é passivo financeiro real, que cresce quanto mais tempo passa sem correção. Também serve de comparação direta entre cenários (1 mês com sensor vs. 18/24/36 meses sem ele).
+
+7. Escopo
+
+Aplica-se só a exposição contínua/habitual, apurada por investigação. Multa administrativa, custo previdenciário e indenização são calculados em módulos separados do projeto.
+
+8. Roteiro de apresentação (~1 minuto)
+
+"Essa calculadora resolve uma pergunta simples: quanto custa expor um funcionário à amônia sem controle? A resposta está na lei.
+
+A NR-15 garante: funcionário exposto à amônia acima de 20 ppm tem direito a 20% de adicional sobre o salário mínimo — R$ 324,20 por mês, por funcionário. Ponto.
+
+Como isso aparece na prática? Um funcionário denuncia, o Ministério Público do Trabalho abre investigação, e a perícia apura há quanto tempo aquilo vinha acontecendo. Esse tempo apurado é o que entra na conta.
+
+Vou te mostrar com números reais: 10 funcionários, 18 meses apurados. R$ 324,20 vezes 10 vezes 18 — R$ 58.356,00. Some os reflexos obrigatórios de férias, 13º e FGTS, todos fixos em lei, e o valor sobe pra R$ 74.372,45.
+
+Um único episódio. Uma única investigação. Mais de R$ 74 mil de passivo. E isso é só o primeiro dos quatro custos que esse problema gera pra empresa."
+
+Dica de execução: tenha a calculadora aberta na tela e rode ao vivo, mudando o campo "meses" de 1 para 18 — o salto visual do valor reforça o argumento sozinho.
