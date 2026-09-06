@@ -51,7 +51,8 @@
         <i>A legislação trabalhista permite cobrança retroativa de, no máximo, 5 anos (60 meses).</i>
         <br><br>
 
-        <button onclick="calcularTrabalhista()" style="background-color: #8c3b1b; color: white; font-weight: bold">Calcular Passivo Trabalhista</button>
+        <button onclick="calcularTrabalhista()" style="background-color: #8c3b1b; color: white; font-weight: bold">Calcular Passivo Trabalhista</button> <br>
+        <br>
         <div id="div_msgTrabalhista"></div>
     </div>
 
@@ -86,7 +87,7 @@
 </body>
 </html>
 <script>
-    let custoSensor = 45;
+    let custoSensor = 210; //O custo do sensor engloba o sensor e o arduíno, 45 o valor da sensor, 165 o valor do arduíno.
     let custoInstalacao = 120;
 
     function calcularHardware(){
