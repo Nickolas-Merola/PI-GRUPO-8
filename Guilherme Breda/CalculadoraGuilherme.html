@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora Financeira</title>
+  </head>
+  <body>
+    <h1>Simulador financeiro</h1>
+
+    <!-- Quantidade da carcaça perdida //// 267 = 1 -->
+    <label for="ipt_qtdCarne"
+      >Digite a quantidade (267kg por carcaça) de carcaças perdidas:</label
+    >
+    <input type="text" id="ipt_qtdCarne" /> <br />
+
+    <!-- Preço da carne -->
+    <label for="ipt_precoCarne"
+      >Digite qual o preço médio da carne total:</label
+    >
+    <input type="text" id="ipt_precoCarne" /> <br />
+
+    <!-- Horas paradas -->
+    <label for="ipt_Horas">Quantas horas paradas: </label>
+    <input type="text" id="ipt_horas" /> <br />
+
+    <!-- preço de energia média -->
+    <label for="ipt_kwh">Digite o preço médio da enegia em kW/h: </label>
+    <input type="text" id="ipt_kwh" /> <br />
+
+    <!-- Quantos funcionarios estão na instalação -->
+    <label for="ipt_qtdFunc">Quantos funcionarios estao no local: </label>
+    <input type="text" id="ipt_qtdFunc" /> <br />
+
+    <!-- Salario dos funcionarios por hora parada -->
+    <label for="ipt_salario"
+      >Digite o salario médio por hora dos funcionários no local:
+    </label>
+    <input type="text" id="ipt_salario" /> <br />
+
+    <!-- Valor da multa -->
+    <label for="ipt_multa">Digite o valor da multa recebida:</label>
+    <input type="text" id="ipt_multa" /> <br />
+
+    <!-- Valor do dano estrutural -->
+    <label for="ipt_estrutura">Digite o valor do dano estrutural: </label>
+    <input type="text" id="ipt_estrutura" /> <br />
+
+    <button onclick="calcular()">Calcular Prejuizo</button>
+    <div id="div_exibir"></div>
+  </body>
+</html>
+
+<script>
+  function calcular() {
+    let qtdCarne = Number(ipt_qtdCarne.value) * 267;
+    let precoCarne = Number(ipt_precoCarne.value);
+    let horas = Number(ipt_horas.value);
+    let energia = Number(ipt_kwh.value);
+    let funcionarios = Number(ipt_qtdFunc.value);
+    let salarioMedio = Number(ipt_salario.value);
+    let multa = Number(ipt_multa.value);
+    let danoEstrutural = Number(ipt_estrutura.value);
+
+    let valorCarne = qtdCarne * precoCarne;
+    let prejuEnergia = energia * horas;
+    let prejuSalario = funcionarios * (salarioMedio * horas);
+    let custoTotal =
+      valorCarne + prejuEnergia + prejuSalario + multa + danoEstrutural;
+
+    div_exibir.innerHTML = `<b>Prejuízos detalhados </b> <br>
+    O peso total de carne perdida é de ${qtdCarne}kg, totalizando um valor de ${valorCarne}. <br>
+    A produção foi interrompida durante ${horas}. <br>
+    Assim gastando R$${prejuEnergia} com a energia desperdiçada e mais R$${prejuSalario} com o salario dos funcionarios durante a interrupção. <br>
+    O dano na estrutura causado pelo vazamento foi de R$${danoEstrutural}. <br>
+    O valor das multas recebidas foi de R$${multa}. <br>
+    Assim, totalizando um valor de R$${custoTotal}.
+    `;
+  }
+</script>
