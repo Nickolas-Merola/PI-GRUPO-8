@@ -16,7 +16,7 @@
 
     <!-- Preço da carne -->
     <label for="ipt_precoCarne"
-      >Digite qual o preço médio da carne total:</label
+      >Digite qual o preço médio por carcaça:</label
     >
     <input type="text" id="ipt_precoCarne" /> <br />
 
@@ -69,7 +69,7 @@
       valorCarne + prejuEnergia + prejuSalario + multa + danoEstrutural;
 
     div_exibir.innerHTML = `<b>Prejuízos detalhados </b> <br>
-    O peso total de carne perdida é de ${qtdCarne}kg, totalizando um valor de ${valorCarne}. <br>
+    O peso total de carne perdida é de ${qtdCarne}kg, totalizando um valor de R$${valorCarne}. <br>
     A produção foi interrompida durante ${horas}. <br>
     Assim gastando R$${prejuEnergia} com a energia desperdiçada e mais R$${prejuSalario} com o salario dos funcionarios durante a interrupção. <br>
     O dano na estrutura causado pelo vazamento foi de R$${danoEstrutural}. <br>
