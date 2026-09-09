@@ -95,7 +95,7 @@
 </html>
 
 <script>
-    let custoSensor = 210; 
+    let custoSensor = 80; 
     let custoInstalacao = 120;
 
     function calcularHardware(){
@@ -109,7 +109,9 @@
         div_msgHardware.innerHTML = `
             <div style="background-color: #e6f2ff; padding: 15px; border-radius: 5px; margin-top: 10px;">
                 Total de sensores necessários: <b>${totalSensores}</b><br>
-                Custo estimado de implantação do sistema: <b>R$ ${custoTotal.toFixed(2)}</b>
+                Custo estimado de implantação do sistema: <b>R$ ${custoTotal.toFixed(2)}<br>
+                Utilizamos os valores -> Arduino: R$${custoTotal*0.25} | Sensor: R$${custoTotal*0.10} | Proto-Board: R$${custoTotal*0.05} |  Instalação: R$${custoTotal*0.6}
+                    </b>
             </div>
         `;
     }
