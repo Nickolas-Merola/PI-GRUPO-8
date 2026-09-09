@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simulador Financeiro</title>
+  </head>
+  <body>
+    <h1>Simulador Financeiro</h1>
+    <span
+      >Estime o prejuízo financeiro causado por um vazamento de amônia que
+      interrompe a produção na sala de desossa.</span
+    >
+
+    <h2>Dados da operação</h2>
+    <br />
+
+    <label for="input_capacidade">Qual a capacidade diária de carcaças bovinas?</label> <br>
+    <input value=3000 placeholder="Por exemplo: 3000"  type="text" id="input_capacidade"/>
+    <span><i>(Peso médio de rendimento: 267,3kg)</i></span> 
+    <br /><br />
+
+    <span>Qual a quantidade de horas de funcionamento da desossa?</span><br>
+    <input value=30 placeholder="Ex: 3" type="text" id="input_funcionamento" /><br><br>
+
+    <span>Qual o custo médio do bovino por kg? (R$)</span> <br>
+    <input
+      value="23.00" placeholder="Exemplo: 23.00"  type="text" id="input_custokg"
+    /><br /><br />
+
+    <label for="ipt_Funcionarios">Qual a quantidade de funcionários na operação? </label><br>
+    <input value=300 type="number" id="ipt_Funcionarios" placeholder="Por exemplo: 300"> <br><br>
+
+    <label for="ipt_HoraFuncionario">Qual o valor médio da hora dos funcionários? (R$)</label><br>
+    <input value=13.00 type="number" id="ipt_HoraFuncionario" placeholder="Por exemplo: 13"> <br><br>
+
+     <span>Tempo de paralisação causado pelo vazamento (minutos):</span> <br>
+    <input placeholder="Por exemplo: 60" type="text" id="input_minutosParado"><br><br>
+
+    <button onclick="calcular()">Calcular Prejuízo</button><br /><br />
+
+    <div id="div_mensagem"></div>
+  </body>
+</html>
+<script>
+  function calcular() {
+    let horasPorTurno = 8;
+    let capacidadeDiaria = Number(input_capacidade.value);
+    let tempoFuncionamento = Number(input_funcionamento.value);
+    let minutosParado = Number(input_minutosParado.value);
+    let pesoCarcaca = 267.3;
+    let custoPorKg = Number(input_custokg.value);
+    let Funcionarios = Number(ipt_Funcionarios.value);
+    let HorasParadas = minutosParado;
+    let HoraFuncionario = Number(ipt_HoraFuncionario.value) / 60;
+    let PrejuizoMaoDeObra = Funcionarios * HoraFuncionario * HorasParadas;
+
+
+    // Quantos bovinos e quantos kg de carne passam pela esteira por turno, hora e minuto
+    let bovinosPorTurno = capacidadeDiaria / tempoFuncionamento;
+    let kgDeCarnePorTurno = bovinosPorTurno * pesoCarcaca;
+    let kgDeCarnePorHora = kgDeCarnePorTurno / horasPorTurno;
+    let kgDeCarnePorMinuto = kgDeCarnePorHora / 60;
+
+    // Prejuízo: a carne que estava na esteira no momento do vazamento e foi contaminada
+    let kgDeCarneContaminada = kgDeCarnePorMinuto * minutosParado;
+    let prejuizoCarneContaminada = kgDeCarneContaminada * custoPorKg;
+
+    let mensagem = `Resultado da simulação para uma paralisação de ${minutosParado} minutos na operação causada por vazamento de amônia:<br><br>
+        <b>Carne contaminada:</b> <span style="color:red">${kgDeCarneContaminada.toFixed(2)}kg perdidos.</span></b><br>
+        <b>Custo de Mão de Obra Ociosa: <span style="color:red">R$${PrejuizoMaoDeObra.toFixed(2)}</b></span><br>
+        <b>Prejuízo estimado:<span style="color:red"> R$${prejuizoCarneContaminada.toFixed(2)}</span></b>`
+        ;
+
+
+    
+    div_mensagem.innerHTML = mensagem;
+  }
+</script>
