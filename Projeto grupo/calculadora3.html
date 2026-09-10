@@ -175,10 +175,11 @@
         div_msgIncidente.innerHTML = `
             <div>
                 Resultado para uma paralisação de ${minutosParado} minutos:<br><br>
-                <b>Carne contaminada:</b> <span>${kgDeCarneContaminada.toFixed(2)} kg perdidos.</span><br>
-                <b>Prejuízo com a carne:</b> <span>R$ ${prejuizoCarneContaminada.toFixed(2)}</span><br>
-                <b>Custo de Mão de Obra Ociosa:</b> <span>R$ ${PrejuizoMaoDeObra.toFixed(2)}</span><br><br>
-                <b>PREJUÍZO TOTAL DO ACIDENTE:</b> <span>R$ ${prejuizoTotal.toFixed(2)}</span>
+                <b>Carne contaminada:</b> <span>${kgDeCarneContaminada.toFixed(2)} kg perdidos.</span><br><br>
+                <b>Prejuízo com a carne:</b> <span>R$ ${prejuizoCarneContaminada.toFixed(2)}</span><br><br>
+                <b>Custo de Mão de Obra Ociosa:</b> <span>R$ ${PrejuizoMaoDeObra.toFixed(2)} baseado em ${Funcionarios} funcionários custando R$${HoraFuncionario} por hora com o funcionamento da desossa sendo de ${horasFuncionamento} horas!</span><br><br>
+                <b>Prejuízo total do incidente:</b> <span>R$ ${prejuizoTotal.toFixed(2)} baseado em ${capacidadeDiaria} carcaças bovinas, com peso médio de 267.3KG cada, custando R$${custoPorKg} por KG!</span><br><br>
+                <b>Valores utilizados:</b> <span></span><br><br>
             </div>
         `;
     }
