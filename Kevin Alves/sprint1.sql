@@ -52,8 +52,6 @@ VALUES
 (3, 500, TRUE),
 (4, 100, FALSE);
 
-SELECT nome FROM usuario;
-
 SELECT * FROM usuario;
 
 SELECT nome, email, cargo
