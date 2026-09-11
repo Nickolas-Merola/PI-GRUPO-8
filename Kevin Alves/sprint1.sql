@@ -41,7 +41,6 @@ VALUES
 ('MQ-2', '2026-08-10', 'MANUTENÇÃO'),
 ('MQ-2', '2026-08-15', 'INATIVO');
 
-
 INSERT INTO leitura_sensor (idSensor, valorBruto, vazamento)
 VALUES
 (1, 150, FALSE),
@@ -83,23 +82,6 @@ FROM leitura_sensor
 WHERE valorBruto > 300;
 
 SELECT 
-    leitura_sensor.idLeitura,
-    sensor.idSensor,
-    sensor.modelo,
-    leitura_sensor.valorBruto,
-    leitura_sensor.vazamento,
-    leitura_sensor.dtHora
-FROM leitura_sensor
-
-SELECT 
-    sensor.idSensor,
-    sensor.modelo,
-    sensor.statuss,
-    leitura_sensor.valorBruto,
-    leitura_sensor.vazamento
-FROM sensor
-
-SELECT 
     idLeitura,
     valorBruto,
     CASE
@@ -116,10 +98,6 @@ FROM sensor;
 
 UPDATE usuario
 SET cargo = 'Gerente'
-WHERE idUser = 1;
-
-UPDATE usuario
-SET idade = 26
 WHERE idUser = 1;
 
 UPDATE sensor
