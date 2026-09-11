@@ -18,26 +18,7 @@
     <hr style="border: 1px solid #ccc; margin-top: 30px; margin-bottom: 30px;">
 
     <div>
-        <h2 style="color: #000020">1. Custo de Implantação (AmoniaSense)</h2>
-        <span>
-            <i>Estime o investimento necessário para instalar o sistema de monitoramento na sala de desossa.</i>
-        </span><br><br>
-
-        <label for="input_evaporadores">Número de evaporadores na sala de desossa:</label> <br>
-        <input placeholder="Ex: 4" type="number" id="input_evaporadores"><br><br>
-        
-        <label for="input_sensores">Número de sensores MQ-2 por evaporador:</label> <br>
-        <input placeholder="Ex: 2" type="number" id="input_sensores"><br><br>
-        
-        <button onclick="calcularHardware()" style="background-color: #44749d; color: white; font-weight: bold; padding: 8px;">Calcular Custo do Sistema</button><br><br>
-        
-        <div id="div_msgHardware"></div>
-    </div>
-    
-    <hr style="border: 1px solid #ccc; margin-top: 30px; margin-bottom: 30px;">
-
-    <div>
-        <h2 style="color: #000020">2. Prejuízo Direto de um Acidente (Paralisação)</h2>
+        <h2 style="color: #000020">1. Prejuízo Direto de um Acidente (Paralisação)</h2>
         <span>
             <i>Estime o prejuízo imediato causado por um único vazamento que paralisa a produção.</i>
         </span><br><br>
@@ -69,6 +50,25 @@
         <button onclick="calcularIncidente()" style="background-color: #44749d; color: white; font-weight: bold; padding: 8px;">Calcular Prejuízo do Acidente</button><br><br>
 
         <div id="div_msgIncidente"></div>
+    </div>
+    
+    <hr style="border: 1px solid #ccc; margin-top: 30px; margin-bottom: 30px;">
+
+    <div>
+        <h2 style="color: #000020">2. Custo de Implantação (AmoniaSense)</h2>
+        <span>
+            <i>Estime o investimento necessário para instalar o sistema de monitoramento na sala de desossa.</i>
+        </span><br><br>
+
+        <label for="input_evaporadores">Número de evaporadores na sala de desossa:</label> <br>
+        <input placeholder="Ex: 4" type="number" id="input_evaporadores"><br><br>
+        
+        <label for="input_sensores">Número de sensores MQ-2 por evaporador:</label> <br>
+        <input placeholder="Ex: 2" type="number" id="input_sensores"><br><br>
+        
+        <button onclick="calcularHardware()" style="background-color: #44749d; color: white; font-weight: bold; padding: 8px;">Calcular Custo do Sistema</button><br><br>
+        
+        <div id="div_msgHardware"></div>
     </div>
     
     <hr style="border: 1px solid #ccc; margin-top: 30px; margin-bottom: 30px;">
