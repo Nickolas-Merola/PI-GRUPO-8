@@ -82,23 +82,6 @@ FROM leitura_sensor
 WHERE valorBruto > 300;
 
 SELECT 
-    leitura_sensor.idLeitura,
-    sensor.idSensor,
-    sensor.modelo,
-    leitura_sensor.valorBruto,
-    leitura_sensor.vazamento,
-    leitura_sensor.dtHora
-FROM leitura_sensor
-
-SELECT 
-    sensor.idSensor,
-    sensor.modelo,
-    sensor.statuss,
-    leitura_sensor.valorBruto,
-    leitura_sensor.vazamento
-FROM sensor
-
-SELECT 
     idLeitura,
     valorBruto,
     CASE
