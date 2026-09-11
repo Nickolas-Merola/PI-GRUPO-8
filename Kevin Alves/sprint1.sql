@@ -100,10 +100,6 @@ UPDATE usuario
 SET cargo = 'Gerente'
 WHERE idUser = 1;
 
-UPDATE usuario
-SET idade = 26
-WHERE idUser = 1;
-
 UPDATE sensor
 SET statuss = 'MANUTENÇÃO'
 WHERE idSensor = 2;
