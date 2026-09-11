@@ -41,6 +41,7 @@ VALUES
 ('MQ-2', '2026-08-10', 'MANUTENÇÃO'),
 ('MQ-2', '2026-08-15', 'INATIVO');
 
+
 INSERT INTO leitura_sensor (idSensor, valorBruto, vazamento)
 VALUES
 (1, 150, FALSE),
