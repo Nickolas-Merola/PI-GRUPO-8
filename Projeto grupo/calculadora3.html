@@ -53,7 +53,25 @@
     </div>
     
     <div>
-        <h2>2. Custo de Implantação (AmoniaSense)</h2>
+        <h2>2. Passivo Trabalhista Oculto (NR-15)</h2>
+        <span>
+            <i>Estime o valor do adicional de insalubridade devido aos funcionários expostos à amônia sem monitoramento.</i>
+        </span><br><br>
+
+        <label for="input_numeroFuncionarios">Número de funcionários expostos na sala de desossa:</label> <br>
+        <input placeholder="Ex: 20" type="number" id="input_numeroFuncionarios"><br><br>
+
+        <label for="input_mesesExpo">Há quantos meses essa exposição ocorre sem monitoramento?</label> <br>
+        <input placeholder="Ex: 18" type="number" id="input_mesesExpo"><br>
+        <span><i>*A legislação permite cobrança retroativa de no máximo 5 anos (60 meses).</i></span><br><br>
+
+        <button onclick="calcularTrabalhista()">Calcular Passivo Trabalhista</button><br><br>
+        
+        <div id="div_msgTrabalhista"></div>
+    </div>
+
+   <div>
+    <h2>3. Custo de Implantação (AmoniaSense)</h2>
         <span>
             <i>Estime o investimento necessário para instalar o sistema de monitoramento na sala de desossa.</i>
         </span><br><br>
@@ -72,24 +90,6 @@
         <button onclick="calcularIncidente()">Calcular Prejuízo do Acidente</button><br><br>
 
         <div id="div_msgIncidente"></div>
-    </div>
-
-   <div>
-        <h2>3. Passivo Trabalhista Oculto (NR-15)</h2>
-        <span>
-            <i>Estime o valor do adicional de insalubridade devido aos funcionários expostos à amônia sem monitoramento.</i>
-        </span><br><br>
-
-        <label for="input_numeroFuncionarios">Número de funcionários expostos na sala de desossa:</label> <br>
-        <input placeholder="Ex: 20" type="number" id="input_numeroFuncionarios"><br><br>
-
-        <label for="input_mesesExpo">Há quantos meses essa exposição ocorre sem monitoramento?</label> <br>
-        <input placeholder="Ex: 18" type="number" id="input_mesesExpo"><br>
-        <span><i>*A legislação permite cobrança retroativa de no máximo 5 anos (60 meses).</i></span><br><br>
-
-        <button onclick="calcularTrabalhista()">Calcular Passivo Trabalhista</button><br><br>
-        
-        <div id="div_msgTrabalhista"></div>
     </div>
 
 </body>

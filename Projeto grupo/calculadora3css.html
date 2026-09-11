@@ -55,26 +55,13 @@
     <hr style="border: 1px solid #ccc; margin-top: 30px; margin-bottom: 30px;">
 
     <div>
-        <h2 style="color: #000020">2. Custo de Implantação (AmoniaSense)</h2>
-        <span>
-            <i>Estime o investimento necessário para instalar o sistema de monitoramento na sala de desossa.</i>
-        </span><br><br>
-
-        <label for="input_evaporadores">Número de evaporadores na sala de desossa:</label> <br>
-        <input placeholder="Ex: 4" type="number" id="input_evaporadores"><br><br>
         
-        <label for="input_sensores">Número de sensores MQ-2 por evaporador:</label> <br>
-        <input placeholder="Ex: 2" type="number" id="input_sensores"><br><br>
-        
-        <button onclick="calcularHardware()" style="background-color: #44749d; color: white; font-weight: bold; padding: 8px;">Calcular Custo do Sistema</button><br><br>
-        
-        <div id="div_msgHardware"></div>
     </div>
     
     <hr style="border: 1px solid #ccc; margin-top: 30px; margin-bottom: 30px;">
 
     <div>
-        <h2 style="color: #000020">3. Passivo Trabalhista Oculto (NR-15)</h2>
+        <h2 style="color: #000020">2. Passivo Trabalhista Oculto (NR-15)</h2>
         <span>
             <i>Estime o valor do adicional de insalubridade devido aos funcionários expostos à amônia sem monitoramento.</i>
         </span><br><br>
@@ -89,6 +76,20 @@
         <button onclick="calcularTrabalhista()" style="background-color: #44749d; color: white; font-weight: bold; padding: 8px;">Calcular Passivo Trabalhista</button><br><br>
         
         <div id="div_msgTrabalhista"></div>
+        <h2 style="color: #000020">3. Custo de Implantação (AmoniaSense)</h2>
+        <span>
+            <i>Estime o investimento necessário para instalar o sistema de monitoramento na sala de desossa.</i>
+        </span><br><br>
+
+        <label for="input_evaporadores">Número de evaporadores na sala de desossa:</label> <br>
+        <input placeholder="Ex: 4" type="number" id="input_evaporadores"><br><br>
+        
+        <label for="input_sensores">Número de sensores MQ-2 por evaporador:</label> <br>
+        <input placeholder="Ex: 2" type="number" id="input_sensores"><br><br>
+        
+        <button onclick="calcularHardware()" style="background-color: #44749d; color: white; font-weight: bold; padding: 8px;">Calcular Custo do Sistema</button><br><br>
+        
+        <div id="div_msgHardware"></div>
     </div>
 
 </body>
