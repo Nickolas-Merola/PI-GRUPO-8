@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sensores de amônia</title>
+</head>
+<body>
+    <h1> SENSORES DE AMÔNIA: CALCULE O CUSTO DA SUA SALA DE DESOSSA </h1>
+    
+    <label for="input_evaporadores">Número de evaporadores:</label>
+    <input type="text" id="ipt_evaporadores">
+
+    <label for="input_sensores">Sensores por evaporadores:</label>
+    <input type="text" id="ipt_sensores">
+
+    <button onclick="calcular()">Calcular</button>
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    let custoSensor = 45;
+    let custoInstalacao = 120;
+
+    function calcular(){
+        let evaporadores = Number(ipt_evaporadores.value);
+        let sensores = Number(ipt_sensores.value);
+
+        let totalSensores = evaporadores * sensores;
+        let custoPorSensor = custoSensor + custoInstalacao;
+        let custoTotal = totalSensores * custoPorSensor;
+
+        div_msg.innerHTML = `Total de sensores: ${totalSensores} | Custo total: R$${custoTotal}`;
+    }
+</script>
