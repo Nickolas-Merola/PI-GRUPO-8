@@ -18,24 +18,7 @@
     
 
     <div>
-        <h2>1. Custo de Implantação (AmoniaSense)</h2>
-        <span>
-            <i>Estime o investimento necessário para instalar o sistema de monitoramento na sala de desossa.</i>
-        </span><br><br>
-
-        <label for="input_evaporadores">Número de evaporadores na sala de desossa:</label> <br>
-        <input placeholder="Ex: 4" type="number" id="input_evaporadores"><br><br>
-        
-        <label for="input_sensores">Número de sensores MQ-2 por evaporador:</label> <br>
-        <input placeholder="Ex: 2" type="number" id="input_sensores"><br><br>
-        
-        <button onclick="calcularHardware()">Calcular Custo do Sistema</button><br><br>
-        
-        <div id="div_msgHardware"></div>
-    </div>
-    
-    <div>
-        <h2>2. Prejuízo Direto de um Acidente (Paralisação)</h2>
+        <h2>1. Prejuízo Direto de um Acidente (Paralisação)</h2>
         <span>
             <i>Estime o prejuízo imediato causado por um único vazamento que paralisa a produção.</i>
         </span><br><br>
@@ -62,6 +45,28 @@
         <div id="tempo">
             <label>Tempo de paralisação causado pelo vazamento (minutos):</label> <br>
             <input placeholder="Ex: 60" type="number" id="input_minutos"><br><br>
+        </div>
+
+        <button onclick="calcularIncidente()">Calcular Prejuízo do Acidente</button><br><br>
+
+        <div id="div_msgIncidente"></div>
+    </div>
+    
+    <div>
+        <h2>2. Custo de Implantação (AmoniaSense)</h2>
+        <span>
+            <i>Estime o investimento necessário para instalar o sistema de monitoramento na sala de desossa.</i>
+        </span><br><br>
+
+        <label for="input_evaporadores">Número de evaporadores na sala de desossa:</label> <br>
+        <input placeholder="Ex: 4" type="number" id="input_evaporadores"><br><br>
+        
+        <label for="input_sensores">Número de sensores MQ-2 por evaporador:</label> <br>
+        <input placeholder="Ex: 2" type="number" id="input_sensores"><br><br>
+        
+        <button onclick="calcularHardware()">Calcular Custo do Sistema</button><br><br>
+        
+        <div id="div_msgHardware"></div>
         </div>
 
         <button onclick="calcularIncidente()">Calcular Prejuízo do Acidente</button><br><br>
